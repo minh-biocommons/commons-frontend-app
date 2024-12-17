@@ -1,281 +1,271 @@
 [
   {
-    "tabTitle": "Cases",
+    "tabTitle": "Subjects",
     "charts": {
-      "race": {
-        "chartType": "fullPie",
-        "title": "Race"
+      "sex": {
+        "chartType": "donut",
+        "title": "Sex"
       },
-      "ethnicity": {
+      "smoking_status": {
         "chartType": "horizontalStacked",
-        "title": "Ethnicity"
+        "title": "Smoking Status"
       },
-      "gender": {
-        "chartType": "bar",
-        "title": "Gender"
+      "project_id": {
+        "chartType": "fullPie",
+        "title": "Subjects per Study"
+      },
+      "diabetes_type": {
+        "chartType": "horizontalStacked",
+        "title": "Diabetes Type"
       }
     },
     "filters": {
       "tabs": [
         {
-          "title": "Study Selection",
-          "fields": ["project"]
+          "title": "Study Info",
+          "fields": [
+            "project_id",
+            "_measured_lipids",
+            "_measured_proteins",
+            "_measured_metabolites",
+            "_measured_serum_markers",
+            "data_format",
+            "data_type",
+            "data_category",
+            "_aligned_reads_files_count",
+            "_lipidomics_files_count",
+            "_proteomics_files_count",
+            "_metabolomics_files_count",
+            "_serum_marker_files_count"
+          ]
         },
         {
-          "title": "Subjects",
+          "title": "Demographic",
           "fields": [
-            "study",
-            "gender",
-            "race",
-            "ethnicity",
-            "vital_status",
-            "whatever_lab_result_value"
-          ],
-          "fieldsConfig": {
-            "gender" : {
-              "type" : "multiselect"
-            }
-          }
+            "sex",
+            "baseline_age",
+            "bmi_baseline",
+            "education"
+          ]
+        },
+        {
+          "title": "Blood Pressure",
+          "fields": [
+            "_blood_pressure_tests_count",
+            "max_sbp",
+            "min_sbp",
+            "max_dbp",
+            "min_dbp"
+          ]
+        },
+        {
+          "title": "Lab result",
+          "fields": [
+            "_lab_results_count",
+            "max_total_cholesterol",
+            "max_ldl_c",
+            "max_hdl_c",
+            "max_trigs",
+            "max_dbp",
+            "max_creatinine_serum_jaffe",
+            "max_creatinine_serum_enzymatic",
+            "max_hba1c_mmol",
+            "max_hba1c_percent"
+          ]
+        },
+        {
+          "title": "Lifestyle",
+          "fields": [
+            "smoking_status",
+            "cigarettes_per_day",
+            "drinking_status"
+          ]
+        },
+        {
+          "title": "Medical",
+          "fields": [
+            "diabetes_type"
+          ]
+        },
+        {
+          "title": "Medication",
+          "fields": [
+            "lipid_lowering_meds",
+            "diabetes_therapy"
+          ]
         }
       ]
     },
     "table": {
       "enabled": true,
-      "detailsConfig": {
-        "panel": "default",
-        "mode" : "click",
-        "idField": "submitter_id",
-        "title": "Row Details"
-      },
-      "pageLimit": {
-        "limit": 10000
-      },
       "fields": [
-        "project",
-        "gender",
-        "race",
-        "ethnicity",
-        "whatever_lab_result_value"
-      ],
-      "columns": {
-        "whatever_lab_result_value": {
-          "sortable": false
-        }
-      }
+        "node_id",
+        "sex",
+        "baseline_age",
+        "smoking_status",
+        "drinking_status",
+        "diabetes_type",
+        "lipid_lowering_meds",
+        "max_hdl_c",
+        "max_total_cholesterol",
+        "max_trigs",
+        "max_fasting_glucose",
+        "max_hba1c_percent",
+        "max_sbp",
+        "max_dbp",
+        "bmi_baseline",
+        "all_sbp",
+        "all_dbp"
+      ]
     },
-    "dropdowns": {
-      "download-table": {
-        "title": "Download Table",
-        "leftIcon": "gen3:download",
-        "rightIcon": "gen3:chevron-down",
-        "dropdownItems": [
-          {
-            "enabled": true,
-            "type": "data-json",
-            "title": "JSON",
-            "leftIcon": "datafile",
-            "rightIcon": "download",
-            "action": "data-json",
-            "actionArgs" : {
-              "filename": "MIDRC_Series_table.json",
-              "rootPath": "gen3_discovery"
-            }
-          },
-          {
-            "enabled": true,
-            "type": "data-csv",
-            "title": "CSV",
-            "leftIcon": "datafile",
-            "rightIcon": "download",
-            "action": "data-csv",
-            "actionArgs" : {
-              "filename": "data_table.csv"
-            }
-          }
-        ]
-      }
-    },
-    "buttons": [
-      {
-        "enabled": true,
-        "type": "data-json",
-        "title": "JSON",
-        "dropdownId": "download-table",
-        "leftIcon": "datafile",
-        "rightIcon": "download",
-        "actionArgs": {
-          "filename": "data_table.json"
-        }
-      },
-      {
-        "enabled": true,
-        "type": "data-tsv",
-        "title": "TSV",
-        "dropdownId": "download-table",
-        "leftIcon": "datafile",
-        "rightIcon": "download",
-        "actionArgs": {
-          "filename": "data_table.tsv"
-        }
-      },
-      {
-        "enabled": true,
-        "type": "data-csv",
-        "title": "CSV",
-        "dropdownId": "download-table",
-        "leftIcon": "datafile",
-        "rightIcon": "download",
-        "actionArgs": {
-          "filename": "data_table.csv"
-        }
-      },
-      {
-        "enabled": true,
-        "type": "manifest",
-        "action": "manifest",
-        "title": "Download File Manifest for Cases",
-        "leftIcon": "datafile",
-        "rightIcon": "download",
-        "fileName": "case_manifest.json",
-        "actionArgs": {
-          "resourceIndexType": "file",
-          "resourceIdField": "object_id",
-          "referenceIdFieldInResourceIndex": "project_id",
-          "referenceIdFieldInDataIndex": "project_id",
-          "fileFields": ["file_name", "file_size", "md5sum", "object_id"]
-        }
-      }
-    ],
-    "loginForDownload": false,
+    "dropdowns": {},
+    "buttons": [],
     "guppyConfig": {
       "dataType": "subject",
-      "nodeCountTitle": "Subjects",
+      "nodeCountTitle": "Participants",
       "fieldMapping": [
         {
-          "field": "_samples_count",
-          "name": "Samples Count"
+          "field": "baseline_age",
+          "name": "Age (years)"
         },
         {
-          "field": "_imaging_files_count",
-          "name": "Imaging Files Count"
+          "field": "project_id",
+          "name": "Study id"
         },
         {
-          "field": "_unaligned_reads_files_count",
-          "name": "Unaligned Reads Count"
+          "field": "bmi_baseline",
+          "name": "BMI (baseline)"
         },
         {
-          "field": "_aligned_reads_files_count",
-          "name": "Aligned Reads Count"
+          "field": "max_total_cholesterol",
+          "name": "Max. total cholesterol (mmol/L)"
         },
         {
-          "field": "_expression_arrays_count",
-          "name": "Expression Arrays Count"
+          "field": "max_ldl_c",
+          "name": "Max. Low density lipids (mmol/L)"
+        },
+        {
+          "field": "max_hdl_c",
+          "name": "Max. High density lipids (mmol/L)"
+        },
+        {
+          "field": "max_trigs",
+          "name": "Max. Triglycerides (mmol/L)"
+        },
+        {
+          "field": "hba1c_mmol",
+          "name": "Max. Glycated Haemoglobin (HbA1C mmol/mol)"
+        },
+        {
+          "field": "hba1c_percent",
+          "name": "Max. Glycated Haemoglobin (HbA1C %)"
+        },
+        {
+          "field": "max_sbp",
+          "name": "Max. Systolic Blood Pressure (mmHg)"
+        },
+        {
+          "field": "min_sbp",
+          "name": "Min. Systolic Blood Pressure (mmHg)"
+        },
+        {
+          "field": "max_dbp",
+          "name": "Max. Diastolic Blood Pressure (mmHg)"
+        },
+        {
+          "field": "min_dbp",
+          "name": "Min. Diastolic Blood Pressure (mmHg)"
         }
       ],
       "manifestMapping": {
         "resourceIndexType": "file",
         "resourceIdField": "object_id",
-        "referenceIdFieldInResourceIndex": "subject_id",
-        "referenceIdFieldInDataIndex": "subject_id"
+        "referenceIdFieldInResourceIndex": "_subject_id",
+        "referenceIdFieldInDataIndex": "_subject_id"
       },
-      "accessibleFieldCheckList": ["project"],
-      "accessibleValidationField": "project"
-    }
+      "accessibleFieldCheckList": ["project_id"],
+      "accessibleValidationField": "project_id"
+    },
+    "getAccessButtonLink": "https://www.biocommons.org.au/cad-data-access"
   },
   {
-    "tabTitle": "Data Files",
+    "enabled": true,
+    "tabTitle": "Files",
     "charts": {
-      "file_type": {
-        "chartType": "stackedBar",
+      "data_type": {
+        "chartType": "horizontalStacked",
         "title": "File Type"
       },
-      "file_format": {
-        "chartType": "stackedBar",
+      "data_format": {
+        "chartType": "horizontalStacked",
         "title": "File Format"
       }
     },
     "filters": {
       "tabs": [
         {
-          "title": "File",
-          "fields": ["subject_id"]
+          "fields": [
+            "project_id",
+            "sample_provider",
+            "data_type",
+            "data_format",
+            "data_category"
+          ]
         }
       ]
     },
     "table": {
       "enabled": true,
+      "fields": [
+        "project_id",
+        "file_name",
+        "file_size",
+        "object_id"
+      ],
       "detailsConfig": {
         "panel": "fileDetails",
         "mode": "click",
         "idField": "file_name",
-        "title": "File Details"
-      },
-      "fields": ["subject_id", "file_type", "file_size", "object_id"]
+        "title": "File Details",
+        "classNames": {
+          "header" : "!bg-secondary"
+        }
+      }
     },
+    "dropdowns": {},
+    "buttons": [
+      {
+        "enabled": true,
+        "type": "manifest",
+        "action": "manifest",
+        "title": "download manifest",
+        "leftIcon": "datafile",
+        "rightIcon": "download",
+        "fileName": "file_manifest.json",
+        "actionArgs": {
+          "resourceIndexType": "subject",
+          "resourceIdField": "_subject_id",
+          "referenceIdFieldInResourceIndex": "object_id",
+          "referenceIdFieldInDataIndex": "object_id"
+        }
+      }
+    ],
     "guppyConfig": {
       "dataType": "file",
       "fieldMapping": [
-        {
-          "field": "file_id",
-          "name": "GUID"
-        }
+        { "field": "object_id", "name": "GUID" }
       ],
       "nodeCountTitle": "Files",
       "manifestMapping": {
         "resourceIndexType": "subject",
-        "resourceIdField": "subject_id",
+        "resourceIdField": "_subject_id",
         "referenceIdFieldInResourceIndex": "object_id",
         "referenceIdFieldInDataIndex": "object_id"
       },
-      "accessibleFieldCheckList": ["subject_id"],
-      "accessibleValidationField": "subject_id",
-      "downloadAccessor": "subject_id"
+      "accessibleFieldCheckList": ["project_id"],
+      "accessibleValidationField": "project_id",
+      "downloadAccessor": "object_id"
     },
-    "buttons": [
-      {
-        "enabled": true,
-        "type": "data-json",
-        "title": "JSON",
-        "dropdownId": "download-table",
-        "leftIcon": "datafile",
-        "rightIcon": "download",
-        "actionArgs": {
-          "filename": "data_table.json"
-        }
-      },
-      {
-        "enabled": true,
-        "type": "data-tsv",
-        "title": "TSV",
-        "dropdownId": "download-table",
-        "leftIcon": "datafile",
-        "rightIcon": "download",
-        "actionArgs": {
-          "filename": "data_table.tsv"
-        }
-      },
-      {
-        "enabled": true,
-        "type": "data-csv",
-        "title": "CSV",
-        "dropdownId": "download-table",
-        "leftIcon": "datafile",
-        "rightIcon": "download",
-        "actionArgs": {
-          "filename": "data_table.csv"
-        }
-      },
-      {
-        "enabled": true,
-        "type": "file-manifest",
-        "title": "Download File Manifest",
-        "leftIcon": "datafile",
-        "rightIcon": "download",
-        "actionArgs": {
-          "filename": "data_table_manifest.csv"
-        }
-      }
-    ],
-    "loginForDownload": true
+    "getAccessButtonLink": "https://www.biocommons.org.au/cad-data-access"
   }
 ]

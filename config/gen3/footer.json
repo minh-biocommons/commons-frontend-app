@@ -1,6 +1,6 @@
 {
   "classNames": {
-    "root": "bg-base-darker",
+    "root": "bg-primary",
     "layout": "flex items-center justify-end"
   },
   "rightSection": {
@@ -9,8 +9,8 @@
         "rows": [
           {
             "Icon": {
-              "logo": "/icons/gen3.png",
-              "width": 132,
+              "logo": "/ff/icons/gen3.svg",
+              "width": 96,
               "height": 60,
               "description": "Gen3 Logo"
             }
@@ -21,10 +21,22 @@
         "rows": [
           {
             "Icon": {
-              "logo": "/icons/createdby.png",
-              "width": 170,
+              "logo": "/ff/icons/ab-logo.svg",
+              "width": 168,
               "height": 60,
-              "description": "Created by CTDS"
+              "description": "Australian Biocommons Logo"
+            }
+          }
+        ]
+      },
+      {
+        "rows": [
+          {
+            "Icon": {
+              "logo": "/ff/icons/baker-logo.svg",
+              "width": 132,
+              "height": 60,
+              "description": "Baker Institute Logo"
             }
           }
         ]

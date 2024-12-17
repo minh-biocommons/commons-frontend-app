@@ -19,10 +19,35 @@ const withMDX = require('@next/mdx')({
 
 // Next configuration with support for rewrting API to existing common services
 const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'data.test.biocommons.org.au',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'australianbiocommons.github.io',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'idtc.baker.edu.au',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.licdn.com',
+        pathname: '/**',
+      },
+    ],
+  },
   output: 'standalone',
   reactStrictMode: true,
   pageExtensions: ['mdx', 'md', 'jsx', 'js', 'tsx', 'ts'],
-  basePath: process.env.BASE_PATH || '',
+  basePath: process.env.BASE_PATH || '/ff',
+  trailingSlash: true,
   transpilePackages: ['@gen3/core', '@gen3/frontend'],
   webpack: (config) => {
     config.infrastructureLogging = {
